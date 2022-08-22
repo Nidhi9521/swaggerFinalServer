@@ -149,7 +149,7 @@ var ReviewDomain = /** @class */ (function () {
                         comfort = 0;
                         location = 0;
                         facilities = 0;
-                        return [4 /*yield*/, review_1.reviewmodel.find({ hotel_id: req.params.id }, { __v: 0 }).populate({ path: 'user_id', model: users_1.Usermodel, select: { 'user_name': 1, 'user_image': 1, '_id': 0 } })];
+                        return [4 /*yield*/, review_1.reviewmodel.find({ hotel_id: req.params.id }, { __v: 0 }).populate({ path: 'user_id', model: users_1.Usermodel, select: { 'user_name': 1, 'user_image': 1, '_id': 0 } }).select({'image':-1})];
                     case 1:
                         hotelReview = _a.sent();
                         return [4 /*yield*/, hotel_1.hotelmodel.find({ "_id": req.params.id })];
