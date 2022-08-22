@@ -8,14 +8,14 @@ import { Usermodel } from "../model/users";
 
 class BookingDomain {
     async addBooking(req: Request, res: Response) {
-        var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
+        // var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
 
         try {
             var nextID: any = await bookingmodel.findOne({}, { _id: 1 }).sort({ _id: -1 });
             var noOfRoom: Number = req.body.room_id.length
             var bookIngData: object = {
                 _id: nextID?._id == undefined ? 1 : Number(nextID?.id) + 1,
-                user_id: reqData.uid,
+                user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33",
                 hotel_id: req.body.hotel_id,
                 no_of_room: noOfRoom,
                 room_id: req.body.room_id,
@@ -420,8 +420,11 @@ class BookingDomain {
     async getAllBookingAdmin(req: Request, res: Response) {
         // var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
         var uid: string = "dwkkf5q7ufOeZCSqo5qMBR1sA1F2";
+        console.log("sd");
         var userData = await Usermodel.find({ _id: uid }).select("-__v");
+        console.log(userData);
         if (userData[0].user_type == "admin") {
+            console.log('check test')
             var q: any = req.query;
             var pageSize: any = req.query.pagesize;
             var page: any = req.query.page;
@@ -452,6 +455,7 @@ class BookingDomain {
             var allUserIdarr: any = [];
             userIdarr.push(userId?._id);
             var allUserid: any = await Usermodel.find().select("_id");
+            console.log('check')
             allUserid.forEach((e: any) => {
                 allUserIdarr.push(e._id);
             })
@@ -510,9 +514,11 @@ class BookingDomain {
                         }
                     },
                 ]).skip((parseInt(pageSize) * parseInt(page))).limit(parseInt(pageSize))
-
+                console.log(allBookingData);
+                
                 if (allBookingData) {
                     res.send(allBookingData);
+                    console.log(allBookingData);
                 }
                 else {
                     res.send([]);
@@ -567,6 +573,7 @@ class BookingDomain {
 
                 if (allBookingData) {
                     res.send(allBookingData);
+                    console.log(allBookingData);
                 }
                 else {
                     res.send([]);

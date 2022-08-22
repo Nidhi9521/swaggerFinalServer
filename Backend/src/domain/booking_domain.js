@@ -48,21 +48,18 @@ var BookingDomain = /** @class */ (function () {
     }
     BookingDomain.prototype.addBooking = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var reqData, nextID, noOfRoom, bookIngData, sum, rommIdFromReq, getHotelRoom, roomPrice, getHotelRoomPrice, totalPrize, noOfNight, roomGstPrice, roomDiscountPrice, roomTotalPrize, bookedData, err_1;
+            var nextID, noOfRoom, bookIngData, sum, rommIdFromReq, getHotelRoom, roomPrice, getHotelRoomPrice, totalPrize, noOfNight, roomGstPrice, roomDiscountPrice, roomTotalPrize, bookedData, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        reqData = JSON.parse(JSON.stringify(req.headers['data']));
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 7, , 8]);
+                        _a.trys.push([0, 6, , 7]);
                         return [4 /*yield*/, booking_1.bookingmodel.findOne({}, { _id: 1 }).sort({ _id: -1 })];
-                    case 2:
+                    case 1:
                         nextID = _a.sent();
                         noOfRoom = req.body.room_id.length;
                         bookIngData = {
                             _id: (nextID === null || nextID === void 0 ? void 0 : nextID._id) == undefined ? 1 : Number(nextID === null || nextID === void 0 ? void 0 : nextID.id) + 1,
-                            user_id: reqData.uid,
+                            user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33",
                             hotel_id: req.body.hotel_id,
                             no_of_room: noOfRoom,
                             room_id: req.body.room_id,
@@ -80,7 +77,7 @@ var BookingDomain = /** @class */ (function () {
                         rommIdFromReq = (req.body.room_id);
                         console.log(rommIdFromReq);
                         return [4 /*yield*/, hotel_1.hotelmodel.find({ _id: req.body.hotel_id })];
-                    case 3:
+                    case 2:
                         getHotelRoom = _a.sent();
                         roomPrice = [];
                         getHotelRoom.forEach(function (e) {
@@ -103,27 +100,27 @@ var BookingDomain = /** @class */ (function () {
                         roomTotalPrize = ((getHotelRoomPrice * noOfNight) - roomDiscountPrice + roomGstPrice);
                         console.log('price ' + roomTotalPrize);
                         console.log('total ' + totalPrize);
-                        if (!(roomTotalPrize == totalPrize)) return [3 /*break*/, 5];
+                        if (!(roomTotalPrize == totalPrize)) return [3 /*break*/, 4];
                         bookedData = new booking_1.bookingmodel(bookIngData);
                         console.log(bookedData);
                         return [4 /*yield*/, bookedData.save()];
-                    case 4:
+                    case 3:
                         _a.sent();
                         res.status(statuscode_1.StatusCode.Sucess).send("Booking Success");
                         res.end();
-                        return [3 /*break*/, 6];
-                    case 5:
+                        return [3 /*break*/, 5];
+                    case 4:
                         res.status(statuscode_1.StatusCode.Not_Acceptable).send("Error in calculation");
-                        _a.label = 6;
-                    case 6:
+                        _a.label = 5;
+                    case 5:
                         res.end();
-                        return [3 /*break*/, 8];
-                    case 7:
+                        return [3 /*break*/, 7];
+                    case 6:
                         err_1 = _a.sent();
                         res.status(statuscode_1.StatusCode.Server_Error).send(err_1.message);
                         res.end();
-                        return [3 /*break*/, 8];
-                    case 8: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });

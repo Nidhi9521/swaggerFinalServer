@@ -53,7 +53,7 @@ class CouponDomain {
                     userEligibiltiy = "ALL";
                 }
                 var couponData = await couponmodel.find({
-                    $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $gte: price } },
+                    $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $lte: price } },
                     {
                         $or: [
                             { 'eligibleFor': userEligibiltiy },
@@ -79,11 +79,11 @@ class CouponDomain {
                         res.end();
                     }else{
                         var couponD = await couponmodel.find({
-                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } },{ "maxOrderValue": { $gte: price } } 
+                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } },{ "maxOrderValue": { $lte: price } } 
                             ]
                         });
                         if(couponD.length!=0){
-                            res.status(StatusCode.Sucess).send('Oh NO!!\n\nSo you can not apply this coupon..\nBetter Luck Next Time!!');
+                            res.status(StatusCode.Sucess).send('Oh NO!!\nyou can not apply this coupon..\nBetter Luck Next Time!!');
                             res.end();
                         }else{
                             res.status(StatusCode.Sucess).send([]);
@@ -128,7 +128,7 @@ class CouponDomain {
                     $and: [
                         { "startDate": { $lte: today } },
                         { "endDate": { $gte: today } },
-                        { "maxOrderValue": { $gte: price } },
+                        { "maxOrderValue": { $lte: price } },
                         {
                             $or: [
                                 { 'eligibleFor': userEligibiltiy },

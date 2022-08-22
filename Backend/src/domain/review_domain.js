@@ -47,7 +47,7 @@ var ReviewDomain = /** @class */ (function () {
     //POST Review
     ReviewDomain.prototype.postReview = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var nextID, reqData, checkUserPostedReview, rating, hotelId, imageDataStore, count, postData, data, cleanliness, comfort, location, facilities, hotelReview, avgCleanliness, avgComfort, avgLocation, avgFacilities, avgRating, err_1;
+            var nextID, checkUserPostedReview, rating, hotelId, imageDataStore, count, postData, data, cleanliness, comfort, location, facilities, hotelReview, avgCleanliness, avgComfort, avgLocation, avgFacilities, avgRating, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -55,8 +55,7 @@ var ReviewDomain = /** @class */ (function () {
                         return [4 /*yield*/, review_1.reviewmodel.findOne({}, { _id: 1 }).sort({ _id: -1 })];
                     case 1:
                         nextID = _a.sent();
-                        reqData = JSON.parse(JSON.stringify(req.headers['data']));
-                        return [4 /*yield*/, review_1.reviewmodel.find({ user_id: reqData.uid })];
+                        return [4 /*yield*/, review_1.reviewmodel.find({$and:[{ user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33" },{hotel_id:req.params.id}]})];
                     case 2:
                         checkUserPostedReview = _a.sent();
                         if (!(checkUserPostedReview.length != 0)) return [3 /*break*/, 3];
@@ -77,7 +76,7 @@ var ReviewDomain = /** @class */ (function () {
                         });
                         postData = {
                             _id: (nextID === null || nextID === void 0 ? void 0 : nextID._id) == undefined ? 1 : Number(nextID === null || nextID === void 0 ? void 0 : nextID.id) + 1,
-                            user_id: reqData.uid,
+                            user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33",
                             hotel_id: hotelId,
                             date: Date.now(),
                             comment: req.body.comment,
@@ -105,7 +104,7 @@ var ReviewDomain = /** @class */ (function () {
                     case 6:
                         hotelReview = _a.sent();
                         if (!(hotelReview.length == 0)) return [3 /*break*/, 7];
-                        res.status(statuscode_1.StatusCode.Not_Found).send({});
+                        res.status(statuscode_1.StatusCode.Not_Found).send("Success");
                         return [3 /*break*/, 9];
                     case 7:
                         hotelReview.forEach(function (e) {
@@ -123,7 +122,7 @@ var ReviewDomain = /** @class */ (function () {
                     case 8:
                         _a.sent();
                         console.log("updated");
-                        res.status(statuscode_1.StatusCode.Sucess).send({});
+                        res.status(statuscode_1.StatusCode.Sucess).send("Success");
                         _a.label = 9;
                     case 9: return [3 /*break*/, 11];
                     case 10:

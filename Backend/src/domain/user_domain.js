@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -124,10 +124,10 @@ var UserDomain = /** @class */ (function () {
                     case 0:
                         reqData = JSON.parse(JSON.stringify(req.headers['data']));
                         uid = reqData.uid;
-                        joiSchema = joi_1.object({
-                            user_name: joi_1.string().min(1).max(30),
-                            user_phone_number: joi_1.string().min(10).max(14),
-                            user_image: joi_1.string()
+                        joiSchema = joi_1["default"].object({
+                            user_name: joi_1["default"].string().min(1).max(30),
+                            user_phone_number: joi_1["default"].string().min(10).max(14),
+                            user_image: joi_1["default"].string()
                         });
                         data = {
                             user_name: req.body.user_name,

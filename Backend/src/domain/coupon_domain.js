@@ -121,7 +121,7 @@ var CouponDomain = /** @class */ (function () {
                         userEligibiltiy = "ALL";
                         _c.label = 3;
                     case 3: return [4 /*yield*/, coupon_1.couponmodel.find({
-                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $gte: price } },
+                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $lte: price } },
                                 {
                                     $or: [
                                         { 'eligibleFor': userEligibiltiy },
@@ -151,13 +151,13 @@ var CouponDomain = /** @class */ (function () {
                         res.end();
                         return [3 /*break*/, 9];
                     case 7: return [4 /*yield*/, coupon_1.couponmodel.find({
-                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $gte: price } }
+                            $and: [{ "code": q.code }, { "startDate": { $lte: today } }, { "endDate": { $gte: today } }, { "maxOrderValue": { $lte: price } }
                             ]
                         })];
                     case 8:
                         couponD = _c.sent();
                         if (couponD.length != 0) {
-                            res.status(statuscode_1.StatusCode.Sucess).send('Oh NO!!\n\nSo you can not apply this coupon..\nBetter Luck Next Time!!');
+                            res.status(statuscode_1.StatusCode.Sucess).send('Oh NO!!\nyou can not apply this coupon..\nBetter Luck Next Time!!');
                             res.end();
                         }
                         else {
@@ -214,7 +214,7 @@ var CouponDomain = /** @class */ (function () {
                             $and: [
                                 { "startDate": { $lte: today } },
                                 { "endDate": { $gte: today } },
-                                { "maxOrderValue": { $gte: price } },
+                                { "maxOrderValue": { $lte: price } },
                                 {
                                     $or: [
                                         { 'eligibleFor': userEligibiltiy },

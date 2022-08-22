@@ -78,14 +78,84 @@
     "/booking/roombooking/prize": {
       "get": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "hotelid",
+            "in": "query",
+            "required": true,
+            "type": "number"
+          },{
+            "name": "roomid",
+            "in": "query",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "cin",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },{
+            "name": "cout",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },{
+            "name": "adults",
+            "in": "query",
+            "required": true,
+            "type": "number"
+          },
+        {
+          "name": "coupon_id",
+          "in": "query",
+          "required": true,
+          "type": "number"
+        }
+      
+        ],
         "responses": {}
       }
     },
     "/booking/getallbooking": {
       "get": {
         "description": "",
-        "parameters": [],
+        "parameters": [{
+          "name": "page",
+          "in": "query",
+          "required": true,
+          "type": "number"
+        },{
+          "name": "pagesize",
+          "in": "query",
+          "required": true,
+          "type": "number"
+        },{
+          "name": "hotelname",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "default":""
+        },{
+          "name": "date1",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "default":""
+        },{
+          "name": "date2",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "default":""
+        
+        },{
+          "name": "username",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "default":""
+        }],
         "responses": {}
       }
     },
@@ -138,7 +208,8 @@
       }
     },
     "/city/": {
-      "put": {
+      
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -148,11 +219,6 @@
             "type": "string"
           }
         ],
-        "responses": {}
-      },
-      "get": {
-        "description": "",
-        "parameters": [],
         "responses": {}
       }
     },
@@ -401,21 +467,7 @@
         "responses": {}
       }
     },
-    "/payment/verifypayment": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
-        "responses": {}
-      }
-    },
+    
     "/review/hotel/{id}": {
       "post": {
         "description": "",

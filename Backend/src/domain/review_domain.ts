@@ -10,9 +10,9 @@ class ReviewDomain {
     async postReview(req: Request, res: Response) {
         console.log('post')
         var nextID: any = await reviewmodel.findOne({}, { _id: 1 }).sort({ _id: -1 });
-        var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
+        // var reqData: any = JSON.parse(JSON.stringify(req.headers['data']));
 
-        var checkUserPostedReview = await reviewmodel.find({ user_id: reqData.uid })
+        var checkUserPostedReview = await reviewmodel.find({$and:[{ user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33" },{hotel_id:req.params.id}]})
         if (checkUserPostedReview.length != 0) {
             res.status(StatusCode.Sucess).send('review alerady posted')
             res.end();
@@ -30,7 +30,7 @@ class ReviewDomain {
             })
             var postData: object = {
                 _id: nextID?._id == undefined ? 1 : Number(nextID?.id) + 1,
-                user_id: reqData.uid,
+                user_id: "qeTBCkvbSjRgzYTYEOdPkhynaY33",
                 hotel_id: hotelId,
                 date: Date.now(),
                 comment: req.body.comment,
@@ -54,7 +54,7 @@ class ReviewDomain {
                 await data.save();
                 var hotelReview = await reviewmodel.find({ hotel_id: req.params.id }).populate({ path: 'user_id', model: Usermodel, select: { 'user_name': 1, 'user_image': 1, '_id': 0 } });
                 if (hotelReview.length == 0) {
-                    res.status(StatusCode.Not_Found).send({});
+                    res.status(StatusCode.Not_Found).send("Success");
                 }
                 else {
                     hotelReview.forEach((e: any) => {
@@ -71,7 +71,7 @@ class ReviewDomain {
                     var avgRating = ((avgCleanliness + avgComfort + avgLocation + avgFacilities) / 4).toExponential(1);
                     await hotelmodel.updateOne({ _id: hotelId }, { $set: { rating: avgRating } });
                     console.log("updated");
-                    res.status(StatusCode.Sucess).send({});
+                    res.status(StatusCode.Sucess).send("Success");
                 }
             }
 
