@@ -1,8 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Travelsy",
-    "description": "The Application is all about the service provide. Service provide like hotel booking , tour booking, fight booking and etc."
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
   },
   "host": "",
   "basePath": "",
@@ -13,153 +14,43 @@
     }
   ],
   "schemes": [],
-  "securityDefinitions": {
-    "Bearer": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "token"
-    }
-  },
   "paths": {
-    "/booking/hotelbooking": {
+    "/hotelbooking": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/booking/check": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "cin",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "cout",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "no_of_room",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "hotel_id",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/booking/user/bookings": {
+    "/check": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/booking/roombooking/prize": {
+    "/user/bookings": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "hotelid",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },{
-            "name": "roomid",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "cin",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },{
-            "name": "cout",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },{
-            "name": "adults",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-        {
-          "name": "coupon_id",
-          "in": "query",
-          "required": true,
-          "type": "number"
-        }
-      
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/booking/getallbooking": {
+    "/roombooking/prize": {
       "get": {
         "description": "",
-        "parameters": [{
-          "name": "page",
-          "in": "query",
-          "required": true,
-          "type": "number"
-        },{
-          "name": "pagesize",
-          "in": "query",
-          "required": true,
-          "type": "number"
-        },{
-          "name": "hotelname",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "default":""
-        },{
-          "name": "date1",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "default":""
-        },{
-          "name": "date2",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "default":""
-        
-        },{
-          "name": "username",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "default":""
-        }],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/bookmark/post/{hotel_id}": {
+    "/getallbooking": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "hotel/post/{hotel_id}": {
       "post": {
         "description": "",
         "parameters": [
@@ -173,14 +64,14 @@
         "responses": {}
       }
     },
-    "/bookmark/user/wishlist": {
+    "/user/wishlist": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/cancelbooking/{bookingid}/{deviceid}": {
+    "/{bookingid}/{deviceid}": {
       "put": {
         "description": "",
         "parameters": [
@@ -200,36 +91,33 @@
         "responses": {}
       }
     },
-    "/city/city": {
+    "/city": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/city/": {
-      
-      "get": {
+    "/": {
+      "put": {
         "description": "",
-        "parameters": [
-          {
-            "name": "searchdata",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {}
-      }
-    },
-    "/coupon/coupon": {
+      },
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/coupon/coupon/{id}": {
+    "/coupon": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/coupon/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -243,41 +131,21 @@
         "responses": {}
       }
     },
-    "/coupon/code": {
+    "/code": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "code",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/coupon/couponlistmostapplicable": {
+    "/couponlistmostapplicable": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "price",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/image/{imagelimit}": {
+    "/image/{imagelimit}": {
       "get": {
         "description": "",
         "parameters": [
@@ -291,7 +159,7 @@
         "responses": {}
       }
     },
-    "/hotel/{hotelsearch}": {
+    "/{hotelsearch}": {
       "get": {
         "description": "",
         "parameters": [
@@ -305,7 +173,7 @@
         "responses": {}
       }
     },
-    "/hotel/gethotel/getsinglehotel/{hotel_id}": {
+    "/gethotel/getsinglehotel/{hotel_id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -319,156 +187,63 @@
         "responses": {}
       }
     },
-    "/hotel/gethotellist/gethotelfilterlist": {
+    "/gethotellist/gethotelfilterlist": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "cin",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "cout",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "type",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "id",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "no_of_room",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "rating",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "price",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "features",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/addhotel": {
+    "/addhotel": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/AddHotel"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/addhotelimage": {
+    "/addhotelimage": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/adddeluxeroomimage": {
+    "/adddeluxeroomimage": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/addsuperdeluxeroomimage": {
+    "/addsuperdeluxeroomimage": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/addsemideluxeroomimage": {
+    "/addsemideluxeroomimage": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/hotel/updatehotel": {
+    "/updatehotel": {
       "put": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    
-    "/review/hotel/{id}": {
+    "/verifypayment": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/hotel/{id}": {
       "post": {
         "description": "",
         "parameters": [
@@ -477,13 +252,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
           }
         ],
         "responses": {}
@@ -501,54 +269,28 @@
         "responses": {}
       }
     },
-    "/review/reviewpending/": {
+    "/reviewpending/": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/review/reviewapprove/": {
+    "/reviewapprove/": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "review_id",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "approve",
-            "in": "query",
-            "required": true,
-            "type": "boolean"
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/review/reviewimageapprove/": {
+    "/reviewimageapprove/": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "review_id",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          },
-          {
-            "name": "image_id",
-            "in": "query",
-            "required": true,
-            "type": "number"
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/room/getroom/{hotelid}/{roomid}": {
+    "/getroom/{hotelid}/{roomid}": {
       "get": {
         "description": "",
         "parameters": [
@@ -568,7 +310,7 @@
         "responses": {}
       }
     },
-    "/tour/{tourlimit}": {
+    "/{tourlimit}": {
       "get": {
         "description": "",
         "parameters": [
@@ -582,153 +324,30 @@
         "responses": {}
       }
     },
-    "/user/post": {
+    "/post": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
       }
     },
-    "/user/admincheck": {
+    "/admincheck": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": false,
-            "schema": {}
-          }
-        ],
+        "parameters": [],
         "responses": {}
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "FirebaseAuthentication": {
+        "scheme": "bearer",
+        "type": "http"
       }
     }
   },
   "security": {
-    "firebase": []
-  },
-  "definitions": {
-    "AddHotel": {
-      "hotel_name": {
-        "type": "string"
-      },
-      "address": {
-        "address_line": {
-          "type": "string"
-        },
-        "city_id": {
-          "type": "number"
-        },
-        "pincode": {
-          "type": "number"
-        },
-        "location": {
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          }
-        }
-      },
-      "rating": {
-        "type": "number"
-      },
-      "price": {
-        "type": "number"
-      },
-      "phone_number": {
-        "type": "number"
-      },
-      "no_of_room": {
-        "type": "number"
-      },
-      "description": {
-        "type": "string"
-      },
-      "features": [
-        {
-          "type": "string"
-        }
-      ],
-      "noofdeluxe": {
-        "type": "number"
-      },
-      "deluxesize": {
-        "type": "string"
-      },
-      "deluxebadsize": {
-        "type": "string"
-      },
-      "deluxemaxcapacity": {
-        "type": "number"
-      },
-      "deluxeprice": {
-        "type": "number"
-      },
-      "deluxefeatures": [
-        {
-          "type": "string"
-        }
-      ],
-      "deluxedescription": {
-        "type": "string"
-      },
-      "noofsemideluxe": {
-        "type": "number"
-      },
-      "semideluxesize": {
-        "type": "string"
-      },
-      "semideluxebadsize": {
-        "type": "string"
-      },
-      "semideluxemaxcapacity": {
-        "type": "number"
-      },
-      "semideluxeprice": {
-        "type": "number"
-      },
-      "semideluxefeatures": [
-        {
-          "type": "string"
-        }
-      ],
-      "semideluxedescription": {
-        "type": "string"
-      },
-      "noodsuperdeluxe": {
-        "type": "number"
-      },
-      "superdeluxesize": {
-        "type": "string"
-      },
-      "superdeluxebadsize": {
-        "type": "string"
-      },
-      "superdeluxemaxcapacity": {
-        "type": "number"
-      },
-      "superdeluxeprice": {
-        "type": "number"
-      },
-      "superdeluxefeatures": [
-        {
-          "type": "string"
-        }
-      ],
-      "superdeluxedescription": {
-        "type": "string"
-      }
-    }
+    "FirebaseAuthentication": []
   }
 }

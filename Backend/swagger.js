@@ -18,13 +18,37 @@ const doc = {
         },
         // { ... }
     ],
-    securityDefinitions: {},
+    
+    
     security: {
-        firebase: []
+        FirebaseAuthentication: []
     },
     // by default: empty object
     definitions: {},          // by default: empty object (Swagger 2.0)
-    components: {}            // by default: empty object (OpenAPI 3.x)
+    components: {
+        "securitySchemes": {
+            // "firebase": {
+            //     "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+            //     "flow": "implicit",
+            //     "type": "oauth2",
+            //     "x-google-issuer": "https://securetoken.google.com/travelproject22-6b9d4",
+            //     "x-google-jwks_uri": "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com",
+            //     "x-google-audiences": "travelproject22-6b9d4",
+            //     "scopes": {
+            //         "https://www.googleapis.com/auth/firebase": "Firebase scope"
+            //     }
+            // }
+            FirebaseAuthentication:{
+                scheme: "bearer",
+      
+                type: http
+            }
+
+            
+        }
+      
+        ,
+    }            // by default: empty object (OpenAPI 3.x)
 };
 
 const outputFile = './src/swagger.json';

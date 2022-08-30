@@ -60,6 +60,7 @@ var BookingController = /** @class */ (function () {
         });
     };
     BookingController.roomBookAvailableCheck = function (req, res) {
+        
         return __awaiter(this, void 0, void 0, function () {
             var bookIngDomain;
             return __generator(this, function (_a) {

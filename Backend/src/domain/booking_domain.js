@@ -512,6 +512,8 @@ var BookingDomain = /** @class */ (function () {
         });
     };
     BookingDomain.prototype.bookingFreezFail = function (bookingId) {
+        /* #swagger.security = [{               "OAuth2": []        }] */
+        
         return __awaiter(this, void 0, void 0, function () {
             var e_2;
             return __generator(this, function (_a) {

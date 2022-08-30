@@ -72,7 +72,9 @@ class BookingDomain {
     }
 
     async roomBookAvailableCheck(req: Request, res: Response) {
+        /* #swagger.security = [{               "OAuth2": []        }] */
         try {
+
             var q: any = req.query;
             const hotelId: string = q.hotel_id;
             const cIn: Date = new Date(q.cin);
@@ -515,7 +517,7 @@ class BookingDomain {
                     },
                 ]).skip((parseInt(pageSize) * parseInt(page))).limit(parseInt(pageSize))
                 console.log(allBookingData);
-                
+
                 if (allBookingData) {
                     res.send(allBookingData);
                     console.log(allBookingData);
